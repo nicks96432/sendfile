@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.2.0)
+project(sendfile VERSION 0.1.0)
+
+if(WIN32)
+	add_compile_definitions(_Windows)
+endif()
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+set (CPACK_RESOURCE_FILE_LICENSE ${sendfile_SOURCE_DIR}/LICENSE)
+include(CPack)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${sendfile_SOURCE_DIR}/bin)
+
+add_subdirectory(src)
